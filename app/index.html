@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Shore — GTA-style Cover Maker</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">NS</span> Neon Shore <em>cover maker</em></div>
+  <div class="top-note">100% offline &middot; your photos never leave this machine</div>
+</header>
+
+<main id="editor" class="editor">
+  <section class="stage-col">
+    <div class="stage-wrap">
+      <canvas id="stage" width="540" height="675" aria-label="Cover preview"></canvas>
+      <p class="hint">Click a panel to select it, then drag the photo inside it to reposition. Drag works on the preview.</p>
+    </div>
+  </section>
+
+  <aside class="controls">
+    <section class="panel-box">
+      <h2>1 &middot; Layout</h2>
+      <div class="btn-row" id="layoutRow">
+        <button type="button" data-layout="hero" class="on">Hero + 3</button>
+        <button type="button" data-layout="grid">Grid 2&times;2</button>
+        <button type="button" data-layout="full">Full photo</button>
+      </div>
+    </section>
+
+    <section class="panel-box">
+      <h2>2 &middot; Colour grade</h2>
+      <div class="btn-row" id="gradeRow">
+        <button type="button" data-grade="sunset" class="on">Sunset</button>
+        <button type="button" data-grade="neon">Neon night</button>
+        <button type="button" data-grade="teal">Teal &amp; orange</button>
+      </div>
+    </section>
+
+    <section class="panel-box">
+      <h2>3 &middot; Selected panel</h2>
+      <p class="panel-label">Panel <span id="panelName">1</span> of <span id="panelCount">4</span></p>
+      <div class="btn-row wrap" id="photoRow">
+        <button type="button" data-photo="sample1">Sample: boulevard</button>
+        <button type="button" data-photo="sample2">Sample: neon street</button>
+        <button type="button" id="uploadBtn">Upload your photo&hellip;</button>
+        <input type="file" id="fileInput" accept="image/*" hidden>
+      </div>
+      <label class="slider-label">Zoom <span id="zoomVal">100%</span>
+        <input type="range" id="zoomSlider" min="100" max="260" value="100">
+      </label>
+      <div class="btn-row">
+        <button type="button" id="fillAllBtn">Use this photo in every panel</button>
+        <button type="button" id="resetPanBtn">Centre photo</button>
+      </div>
+    </section>
+
+    <section class="panel-box">
+      <h2>4 &middot; Caption</h2>
+      <label class="field-label">Big caption
+        <input type="text" id="captionInput" value="NEON SHORE" maxlength="24">
+      </label>
+      <label class="field-label">Neon subtitle
+        <input type="text" id="subtitleInput" value="golden hour, neon nights" maxlength="48">
+      </label>
+    </section>
+
+    <section class="panel-box export-box">
+      <h2>5 &middot; Export PNG</h2>
+      <div class="btn-row" id="sizeRow">
+        <button type="button" data-size="square">1080 &times; 1080</button>
+        <button type="button" data-size="portrait" class="on">1080 &times; 1350</button>
+        <button type="button" data-size="wide">1920 &times; 1080</button>
+      </div>
+      <button type="button" id="exportBtn" class="export-btn">Download cover PNG</button>
+      <p class="fineprint">One click, one PNG, ready to post. No upload, no watermark, no account.</p>
+    </section>
+  </aside>
+</main>
+
+<div id="coverMode" class="cover-mode" hidden>
+  <canvas id="coverCanvas" aria-label="Exported cover"></canvas>
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
